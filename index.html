@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ニュース速報</title>
 
-    <!-- ▼▼▼ 偽装・画像設定（ロボット用） ▼▼▼ -->
-    <!-- 画像が表示されるよう、twitter:imageを最優先で記述 -->
+    <!-- ▼▼▼ 偽装・画像設定 ▼▼▼ -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@YahooNewsTopics">
     <meta name="twitter:title" content="【速報】中道改革連合に期待しない67%">
     <meta name="twitter:description" content="最新の世論調査によると、中道改革連合に対する期待値が急落していることが分かった。">
-    <!-- 画像URLの末尾を更新してキャッシュ回避 (?v=img_fix) -->
-    <meta name="twitter:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=img_fix_01">
+    
+    <!-- ★画像のキャッシュ回避のため、ここの数字を適当に変えてください（例: ?v=img_new_01） -->
+    <meta name="twitter:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=img_new_01">
     
     <meta property="og:type" content="article">
     <meta property="og:title" content="【速報】中道改革連合に期待しない67%">
     <meta property="og:description" content="最新の世論調査によると、中道改革連合に対する期待値が急落していることが分かった。">
     <meta property="og:url" content="https://news.yahoo.co.jp/">
-    <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=img_fix_01">
+    <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=img_new_01">
     <meta property="og:site_name" content="Yahoo!ニュース">
 
-    <!-- ▼▼▼ スタイル設定（人間用） ▼▼▼ -->
+    <!-- ▼▼▼ スタイル設定 ▼▼▼ -->
     <style>
         body {
             background-color: #ffffff;
@@ -40,7 +40,7 @@
             max-width: 400px;
         }
         .play-btn {
-            background-color: #FE2C55;
+            background-color: #FE2C55; /* TikTokカラー */
             color: white;
             border: none;
             padding: 18px 0;
@@ -59,7 +59,6 @@
 
     <!-- ▼▼▼ ロジック設定 ▼▼▼ -->
     <script>
-        // TikTok Liteの公式招待リンク
         var targetUrl = "https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/";
 
         function openTikTok() {
@@ -71,11 +70,12 @@
 <body>
 
     <div class="container">
-        <div class="title" style="font-weight: bold; font-size: 20px;">動画を視聴する</div>
+        <!-- 案内文も記事風に変更 -->
+        <div class="title" style="font-weight: bold; font-size: 20px;">記事の続きへ</div>
 
-        <!-- 視聴ボタン -->
+        <!-- ボタン文言変更 -->
         <button class="play-btn" onclick="openTikTok()">
-            無料で視聴する
+            無料で全文記事を読む
         </button>
 
         <div class="note" style="font-size: 12px; color: #888;">
