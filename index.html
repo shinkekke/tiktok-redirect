@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>動画を再生</title>
+    <title>　</title>
 
-    <!-- ▼▼▼ 画像の設定（ここはさっきと同じURLのままでOK） ▼▼▼ -->
+    <!-- ▼▼▼ 画像設定（あなたのURL） ▼▼▼ -->
     <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="タップして動画を再生">
+    
+    <!-- ▼▼▼ タイトル消去設定（スペースを入れて非表示化） ▼▼▼ -->
+    <meta property="og:title" content=" ">
+    <meta property="og:description" content=" ">
+    <meta property="og:site_name" content=" ">
+    <meta name="twitter:title" content=" ">
+    <meta name="twitter:description" content=" ">
     
     <!-- ▼▼▼ 強制アプリ起動ロジック ▼▼▼ -->
     <script>
@@ -16,7 +22,6 @@
         var targetUrl = "https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/";
         
         // アプリ起動用のスキーム（TikTokアプリを直接呼ぶ呪文）
-        // ※「snssdk1233」はTikTok Liteの内部ID識別子の一つです
         var appScheme = "snssdk1233://webview?url=" + encodeURIComponent(targetUrl);
 
         window.onload = function() {
@@ -29,18 +34,20 @@
             }, 500);
         };
     </script>
-    <!-- HTMLタグでのリフレッシュ（JavaScriptが無効な場合用） -->
+    
+    <!-- JavaScript無効時用のバックアップ -->
     <meta http-equiv="refresh" content="0;url=https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/">
 </head>
-<body>
-    <div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
-        <p>アプリを起動しています...</p>
-        <br>
-        <!-- 手動ボタンもアプリ起動用スキームに変更 -->
+<body style="background-color: #000; color: #fff; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <!-- 画面には何も表示せず、真っ黒にして読み込み感を演出 -->
+    <div style="text-align: center; font-family: sans-serif;">
+        <p style="margin-bottom: 20px;">Loading...</p>
+        
+        <!-- 万が一止まった時用のボタン（目立たないように配置） -->
         <a href="https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/" 
            onclick="window.location.href='snssdk1233://webview?url=' + encodeURIComponent('https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/'); return false;"
-           style="background-color: #000; color: #fff; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">
-            アプリで開く
+           style="color: #666; text-decoration: underline; font-size: 12px;">
+            ページが開かない場合はこちら
         </a>
     </div>
 </body>
