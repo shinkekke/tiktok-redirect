@@ -5,50 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>　</title>
 
-    <!-- ▼▼▼ 画像設定（あなたのURL） ▼▼▼ -->
+    <!-- ▼▼▼ 画像設定 ▼▼▼ -->
     <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png">
     <meta name="twitter:card" content="summary_large_image">
     
-    <!-- ▼▼▼ タイトル消去設定（スペースを入れて非表示化） ▼▼▼ -->
+    <!-- ▼▼▼ タイトル完全消去 ▼▼▼ -->
     <meta property="og:title" content=" ">
     <meta property="og:description" content=" ">
-    <meta property="og:site_name" content=" ">
     <meta name="twitter:title" content=" ">
-    <meta name="twitter:description" content=" ">
     
-    <!-- ▼▼▼ 強制アプリ起動ロジック ▼▼▼ -->
+    <!-- ▼▼▼ 超・強力アプリ起動ロジック ▼▼▼ -->
     <script>
-        // 目的のTikTok LiteのURL
+        // ターゲットの招待リンク
         var targetUrl = "https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/";
         
-        // アプリ起動用のスキーム（TikTokアプリを直接呼ぶ呪文）
-        var appScheme = "snssdk1233://webview?url=" + encodeURIComponent(targetUrl);
+        // 【重要】アプリを呼び出す複数のパターンを用意
+        var schemes = [
+            // パターンA: 招待コードを直接アプリに渡す形式（最も強力）
+            "snssdk1233://link?url=" + encodeURIComponent(targetUrl),
+            // パターンB: webview経由で開く形式
+            "snssdk1233://webview?url=" + encodeURIComponent(targetUrl),
+            // パターンC: ユニバーサルリンク形式（iOS用）
+            targetUrl
+        ];
 
         window.onload = function() {
-            // 1. Android/iOS向けのアプリ直接起動命令
-            window.location.href = appScheme;
+            // パターンAを試行
+            window.location.href = schemes[0];
 
-            // 2. バックアップとして通常のHTTPS転送もセット（0.5秒後）
+            // 0.1秒後にパターンBを試行
+            setTimeout(function() {
+                window.location.href = schemes[1];
+            }, 100);
+
+            // 0.5秒経ってもダメなら、最終手段として通常のURLへ
             setTimeout(function() {
                 window.location.replace(targetUrl);
             }, 500);
         };
     </script>
     
-    <!-- JavaScript無効時用のバックアップ -->
+    <!-- JavaScript無効時のバックアップ -->
     <meta http-equiv="refresh" content="0;url=https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/">
 </head>
-<body style="background-color: #000; color: #fff; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <!-- 画面には何も表示せず、真っ黒にして読み込み感を演出 -->
-    <div style="text-align: center; font-family: sans-serif;">
-        <p style="margin-bottom: 20px;">Loading...</p>
-        
-        <!-- 万が一止まった時用のボタン（目立たないように配置） -->
-        <a href="https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/" 
-           onclick="window.location.href='snssdk1233://webview?url=' + encodeURIComponent('https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/'); return false;"
-           style="color: #666; text-decoration: underline; font-size: 12px;">
-            ページが開かない場合はこちら
-        </a>
-    </div>
+<body style="background-color: #000; margin: 0; overflow: hidden;">
+    <!-- 真っ黒な画面で待機 -->
 </body>
 </html>
