@@ -6,24 +6,20 @@
     <title>ニュース速報</title>
 
     <!-- ▼▼▼ 偽装・画像設定 ▼▼▼ -->
-    <!-- 画像URLの末尾を更新 (?v=white01) -->
-    <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=white01">
-    <meta name="twitter:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=white01">
+    <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=universal01">
+    <meta name="twitter:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=universal01">
     <meta name="twitter:card" content="summary_large_image">
     
-    <!-- タイトル変更 -->
     <meta property="og:title" content="【速報】中道改革連合に期待しない67%">
-    <!-- 説明文もニュースっぽく変更 -->
     <meta property="og:description" content="最新の世論調査によると、中道改革連合に対する期待値が急落していることが分かった。">
-    <!-- サイト名をニュースサイト風に -->
     <meta property="og:site_name" content="news.yahoo.co.jp">
 
-    <!-- ▼▼▼ デザイン設定（白背景） ▼▼▼ -->
+    <!-- ▼▼▼ スタイル設定（白背景） ▼▼▼ -->
     <style>
         body {
-            background-color: #ffffff; /* 白背景 */
-            color: #333333; /* 黒文字 */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -37,8 +33,8 @@
             max-width: 400px;
         }
         .play-btn {
-            background-color: #FE2C55; /* TikTokの赤色 */
-            color: white; /* ボタンの文字は白 */
+            background-color: #FE2C55;
+            color: white;
             border: none;
             padding: 18px 0;
             width: 100%;
@@ -50,43 +46,26 @@
             display: block;
             margin-top: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 軽い影 */
-        }
-        .play-btn:active {
-            opacity: 0.8;
-            transform: scale(0.98);
-        }
-        .title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .note {
-            font-size: 12px;
-            color: #888;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
     </style>
 
-    <!-- ▼▼▼ アプリ起動ロジック ▼▼▼ -->
+    <!-- ▼▼▼ 【重要】シンプル転送ロジック ▼▼▼ -->
     <script>
+        // TikTok Liteの公式招待リンク
         var targetUrl = "https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/";
-        var appScheme = "snssdk1233://link?url=" + encodeURIComponent(targetUrl);
 
         function openTikTok() {
-            // アプリ起動試行
-            window.location.href = appScheme;
-            
-            // アプリがない場合はWebへ
-            setTimeout(function() {
-                window.location.href = targetUrl;
-            }, 500);
+            // アプリ起動スキーム(snssdk://)は使いません。
+            // 単純に公式URLへ移動させます。
+            // これによりiPhoneの「Universal Links」機能を誘発させます。
+            window.location.href = targetUrl;
         }
     </script>
 </head>
 <body>
 
     <div class="container">
-        <!-- 画面の表示内容 -->
         <div class="title">動画を視聴する</div>
 
         <!-- 視聴ボタン -->
@@ -94,7 +73,7 @@
             無料で視聴する
         </button>
 
-        <div class="note">
+        <div class="note" style="font-size: 12px; color: #888;">
             アプリが起動しない場合は<br>もう一度ボタンを押してください
         </div>
     </div>
