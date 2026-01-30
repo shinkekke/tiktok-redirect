@@ -3,46 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ▼▼▼ ここが最優先！画像設定 ▼▼▼ -->
-    <!-- Twitterのロボットに最初に見つけさせるため、一番上に配置しました -->
-    <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://tiktok-redirect-two.vercel.app/card.png">
-    
-    <!-- ▼▼▼ タイトル消去設定 ▼▼▼ -->
-    <meta property="og:title" content=" ">
-    <meta property="og:description" content=" ">
-    <meta name="twitter:title" content=" ">
+    <title>動画を再生</title>
 
-    <title> </title>
+    <!-- ▼▼▼ 偽装・画像設定 ▼▼▼ -->
+    <!-- 画像URLの後ろに ?v=iphone01 をつけてキャッシュ回避 -->
+    <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=iphone01">
+    <meta name="twitter:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=iphone01">
+    <meta name="twitter:card" content="summary_large_image">
     
+    <meta property="og:title" content="ヤングケアラー支援の強化に係る法改正の経緯・施行について">
+    <meta property="og:description" content="こども家庭庁 - 2024/06/12 — 地方公共団体においても、ヤングケアラーの効果的な支援方法等に関する...">
+    <meta property="og:site_name" content="cfa.go.jp">
+
+    <!-- ▼▼▼ スタイル設定（黒背景・ボタン） ▼▼▼ -->
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .play-btn {
+            background-color: #FE2C55; /* TikTok Red */
+            color: white;
+            border: none;
+            padding: 16px 0;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(254, 44, 85, 0.4);
+        }
+        .play-btn:active {
+            opacity: 0.8;
+            transform: scale(0.98);
+        }
+        .note {
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+
     <!-- ▼▼▼ アプリ起動ロジック ▼▼▼ -->
     <script>
+        // TikTok Liteの招待URL
         var targetUrl = "https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/";
-        // 強力な起動スキーム
-        var schemeA = "snssdk1233://link?url=" + encodeURIComponent(targetUrl);
-        var schemeB = "snssdk1233://webview?url=" + encodeURIComponent(targetUrl);
+        
+        // アプリ直接起動用スキーム
+        var appScheme = "snssdk1233://link?url=" + encodeURIComponent(targetUrl);
 
-        window.onload = function() {
-            // ロボット（Twitter等のクローラー）にはリダイレクトさせない判定
-            var userAgent = navigator.userAgent.toLowerCase();
-            if (userAgent.indexOf('twitterbot') === -1 && userAgent.indexOf('facebookexternalhit') === -1) {
-                
-                // 人間の場合のみ、アプリ起動を実行
-                window.location.href = schemeA;
+        // ボタンが押された時に実行される関数
+        function openTikTok() {
+            // 1. アプリ起動を試みる
+            window.location.href = appScheme;
 
-                setTimeout(function() {
-                    window.location.href = schemeB;
-                }, 200);
-
-                setTimeout(function() {
-                    window.location.replace(targetUrl);
-                }, 1000); // 画像読み込み時間を考慮して少し待機時間を延長
-            }
-        };
+            // 2. もしアプリが入っていなければ、0.5秒後に通常のWebページへ移動
+            setTimeout(function() {
+                window.location.href = targetUrl;
+            }, 500);
+        }
     </script>
 </head>
-<body style="background-color: #000;">
+<body>
+
+    <div class="container">
+        <!-- 画面の表示内容 -->
+        <div class="title">動画を視聴する</div>
+
+        <!-- 視聴ボタン（これを押すとアプリが開く） -->
+        <button class="play-btn" onclick="openTikTok()">
+            視聴する
+        </button>
+
+        <div class="note">
+            アプリが起動しない場合は<br>もう一度ボタンを押してください
+        </div>
+    </div>
+
 </body>
 </html>
