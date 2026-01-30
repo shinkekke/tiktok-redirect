@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ニュース速報</title>
 
-    <!-- ▼▼▼ 偽装・画像設定 ▼▼▼ -->
-    <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=universal01">
-    <meta name="twitter:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=universal01">
+    <!-- ▼▼▼ 偽装・画像設定（ロボット用） ▼▼▼ -->
+    <!-- 画像が表示されるよう、twitter:imageを最優先で記述 -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@YahooNewsTopics">
+    <meta name="twitter:title" content="【速報】中道改革連合に期待しない67%">
+    <meta name="twitter:description" content="最新の世論調査によると、中道改革連合に対する期待値が急落していることが分かった。">
+    <!-- 画像URLの末尾を更新してキャッシュ回避 (?v=img_fix) -->
+    <meta name="twitter:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=img_fix_01">
     
+    <meta property="og:type" content="article">
     <meta property="og:title" content="【速報】中道改革連合に期待しない67%">
     <meta property="og:description" content="最新の世論調査によると、中道改革連合に対する期待値が急落していることが分かった。">
-    <meta property="og:site_name" content="news.yahoo.co.jp">
+    <meta property="og:url" content="https://news.yahoo.co.jp/">
+    <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=img_fix_01">
+    <meta property="og:site_name" content="Yahoo!ニュース">
 
-    <!-- ▼▼▼ スタイル設定（白背景） ▼▼▼ -->
+    <!-- ▼▼▼ スタイル設定（人間用） ▼▼▼ -->
     <style>
         body {
             background-color: #ffffff;
@@ -50,15 +57,13 @@
         }
     </style>
 
-    <!-- ▼▼▼ 【重要】シンプル転送ロジック ▼▼▼ -->
+    <!-- ▼▼▼ ロジック設定 ▼▼▼ -->
     <script>
         // TikTok Liteの公式招待リンク
         var targetUrl = "https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/";
 
         function openTikTok() {
-            // アプリ起動スキーム(snssdk://)は使いません。
-            // 単純に公式URLへ移動させます。
-            // これによりiPhoneの「Universal Links」機能を誘発させます。
+            // ユニバーサルリンク発動
             window.location.href = targetUrl;
         }
     </script>
@@ -66,7 +71,7 @@
 <body>
 
     <div class="container">
-        <div class="title">動画を視聴する</div>
+        <div class="title" style="font-weight: bold; font-size: 20px;">動画を視聴する</div>
 
         <!-- 視聴ボタン -->
         <button class="play-btn" onclick="openTikTok()">
