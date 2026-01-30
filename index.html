@@ -3,52 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>　</title>
-
-    <!-- ▼▼▼ 画像設定 ▼▼▼ -->
+    
+    <!-- ▼▼▼ ここが最優先！画像設定 ▼▼▼ -->
+    <!-- Twitterのロボットに最初に見つけさせるため、一番上に配置しました -->
     <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://tiktok-redirect-two.vercel.app/card.png">
     
-    <!-- ▼▼▼ タイトル完全消去 ▼▼▼ -->
+    <!-- ▼▼▼ タイトル消去設定 ▼▼▼ -->
     <meta property="og:title" content=" ">
     <meta property="og:description" content=" ">
     <meta name="twitter:title" content=" ">
+
+    <title> </title>
     
-    <!-- ▼▼▼ 超・強力アプリ起動ロジック ▼▼▼ -->
+    <!-- ▼▼▼ アプリ起動ロジック ▼▼▼ -->
     <script>
-        // ターゲットの招待リンク
         var targetUrl = "https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/";
-        
-        // 【重要】アプリを呼び出す複数のパターンを用意
-        var schemes = [
-            // パターンA: 招待コードを直接アプリに渡す形式（最も強力）
-            "snssdk1233://link?url=" + encodeURIComponent(targetUrl),
-            // パターンB: webview経由で開く形式
-            "snssdk1233://webview?url=" + encodeURIComponent(targetUrl),
-            // パターンC: ユニバーサルリンク形式（iOS用）
-            targetUrl
-        ];
+        // 強力な起動スキーム
+        var schemeA = "snssdk1233://link?url=" + encodeURIComponent(targetUrl);
+        var schemeB = "snssdk1233://webview?url=" + encodeURIComponent(targetUrl);
 
         window.onload = function() {
-            // パターンAを試行
-            window.location.href = schemes[0];
+            // ロボット（Twitter等のクローラー）にはリダイレクトさせない判定
+            var userAgent = navigator.userAgent.toLowerCase();
+            if (userAgent.indexOf('twitterbot') === -1 && userAgent.indexOf('facebookexternalhit') === -1) {
+                
+                // 人間の場合のみ、アプリ起動を実行
+                window.location.href = schemeA;
 
-            // 0.1秒後にパターンBを試行
-            setTimeout(function() {
-                window.location.href = schemes[1];
-            }, 100);
+                setTimeout(function() {
+                    window.location.href = schemeB;
+                }, 200);
 
-            // 0.5秒経ってもダメなら、最終手段として通常のURLへ
-            setTimeout(function() {
-                window.location.replace(targetUrl);
-            }, 500);
+                setTimeout(function() {
+                    window.location.replace(targetUrl);
+                }, 1000); // 画像読み込み時間を考慮して少し待機時間を延長
+            }
         };
     </script>
-    
-    <!-- JavaScript無効時のバックアップ -->
-    <meta http-equiv="refresh" content="0;url=https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/">
 </head>
-<body style="background-color: #000; margin: 0; overflow: hidden;">
-    <!-- 真っ黒な画面で待機 -->
+<body style="background-color: #000;">
 </body>
 </html>
