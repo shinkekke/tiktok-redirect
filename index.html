@@ -1,26 +1,47 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>動画を再生</title>
 
-    <!-- ここに表示させたい画像のURLを入れる -->
+    <!-- ▼▼▼ 画像の設定（ここはさっきと同じURLのままでOK） ▼▼▼ -->
     <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png">
-    <meta property="og:title" content="【表示させたいタイトル】">
-    <meta property="og:description" content="タップして動画を視聴">
     <meta name="twitter:card" content="summary_large_image">
-
-    <!-- ここに飛ばしたいURLを入れる -->
-    <meta http-equiv="refresh" content="0;url=https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/">
+    <meta name="twitter:title" content="タップして動画を再生">
     
+    <!-- ▼▼▼ 強制アプリ起動ロジック ▼▼▼ -->
     <script>
-        // JavaScriptでも強制転送（バックアップ）
-        window.location.href = "https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/";
+        // 目的のTikTok LiteのURL
+        var targetUrl = "https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/";
+        
+        // アプリ起動用のスキーム（TikTokアプリを直接呼ぶ呪文）
+        // ※「snssdk1233」はTikTok Liteの内部ID識別子の一つです
+        var appScheme = "snssdk1233://webview?url=" + encodeURIComponent(targetUrl);
+
+        window.onload = function() {
+            // 1. Android/iOS向けのアプリ直接起動命令
+            window.location.href = appScheme;
+
+            // 2. バックアップとして通常のHTTPS転送もセット（0.5秒後）
+            setTimeout(function() {
+                window.location.replace(targetUrl);
+            }, 500);
+        };
     </script>
+    <!-- HTMLタグでのリフレッシュ（JavaScriptが無効な場合用） -->
+    <meta http-equiv="refresh" content="0;url=https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/">
 </head>
 <body>
-    <p>読み込み中...</p>
+    <div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
+        <p>アプリを起動しています...</p>
+        <br>
+        <!-- 手動ボタンもアプリ起動用スキームに変更 -->
+        <a href="https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/" 
+           onclick="window.location.href='snssdk1233://webview?url=' + encodeURIComponent('https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/'); return false;"
+           style="background-color: #000; color: #fff; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+            アプリで開く
+        </a>
+    </div>
 </body>
 </html>
-
