@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>動画を再生</title>
+    <title>ニュース速報</title>
 
     <!-- ▼▼▼ 偽装・画像設定 ▼▼▼ -->
-    <!-- 画像URLの後ろに ?v=iphone01 をつけてキャッシュ回避 -->
-    <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=iphone01">
-    <meta name="twitter:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=iphone01">
+    <!-- 画像URLの末尾を更新 (?v=white01) -->
+    <meta property="og:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=white01">
+    <meta name="twitter:image" content="https://tiktok-redirect-two.vercel.app/card.png?v=white01">
     <meta name="twitter:card" content="summary_large_image">
     
-    <meta property="og:title" content="ヤングケアラー支援の強化に係る法改正の経緯・施行について">
-    <meta property="og:description" content="こども家庭庁 - 2024/06/12 — 地方公共団体においても、ヤングケアラーの効果的な支援方法等に関する...">
-    <meta property="og:site_name" content="cfa.go.jp">
+    <!-- タイトル変更 -->
+    <meta property="og:title" content="【速報】中道改革連合に期待しない67%">
+    <!-- 説明文もニュースっぽく変更 -->
+    <meta property="og:description" content="最新の世論調査によると、中道改革連合に対する期待値が急落していることが分かった。">
+    <!-- サイト名をニュースサイト風に -->
+    <meta property="og:site_name" content="news.yahoo.co.jp">
 
-    <!-- ▼▼▼ スタイル設定（黒背景・ボタン） ▼▼▼ -->
+    <!-- ▼▼▼ デザイン設定（白背景） ▼▼▼ -->
     <style>
         body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #ffffff; /* 白背景 */
+            color: #333333; /* 黒文字 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -33,29 +36,30 @@
             width: 90%;
             max-width: 400px;
         }
-        .title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
         .play-btn {
-            background-color: #FE2C55; /* TikTok Red */
-            color: white;
+            background-color: #FE2C55; /* TikTokの赤色 */
+            color: white; /* ボタンの文字は白 */
             border: none;
-            padding: 16px 0;
+            padding: 18px 0;
             width: 100%;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
             display: block;
+            margin-top: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(254, 44, 85, 0.4);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 軽い影 */
         }
         .play-btn:active {
             opacity: 0.8;
             transform: scale(0.98);
+        }
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
         .note {
             font-size: 12px;
@@ -65,18 +69,14 @@
 
     <!-- ▼▼▼ アプリ起動ロジック ▼▼▼ -->
     <script>
-        // TikTok Liteの招待URL
         var targetUrl = "https://lite.tiktok.com/t/ZS91fhwGHRk8J-OicBG/";
-        
-        // アプリ直接起動用スキーム
         var appScheme = "snssdk1233://link?url=" + encodeURIComponent(targetUrl);
 
-        // ボタンが押された時に実行される関数
         function openTikTok() {
-            // 1. アプリ起動を試みる
+            // アプリ起動試行
             window.location.href = appScheme;
-
-            // 2. もしアプリが入っていなければ、0.5秒後に通常のWebページへ移動
+            
+            // アプリがない場合はWebへ
             setTimeout(function() {
                 window.location.href = targetUrl;
             }, 500);
@@ -89,9 +89,9 @@
         <!-- 画面の表示内容 -->
         <div class="title">動画を視聴する</div>
 
-        <!-- 視聴ボタン（これを押すとアプリが開く） -->
+        <!-- 視聴ボタン -->
         <button class="play-btn" onclick="openTikTok()">
-            視聴する
+            無料で視聴する
         </button>
 
         <div class="note">
